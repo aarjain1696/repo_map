@@ -1,0 +1,10 @@
+# macOS / editor cruft
+.DS_Store
+*.swp
+
+# Python
+__pycache__/
+*.pyc
+
+# If you test the kit against a scratch repo, don't commit its outputs:
+graphify-out/

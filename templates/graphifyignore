@@ -1,0 +1,33 @@
+# repo_map_kit: code-only, privacy-first scan scope (reference / fallback).
+#
+# setup.sh generates a tailored version of this by auto-detecting your source
+# dirs. This file is the hand-editable fallback. Strategy: ignore EVERYTHING,
+# then re-include only the source directories you opt in — so nothing is indexed
+# (and nothing is sent anywhere) unless you allow it here.
+
+# 1) Ignore everything by default
+*
+
+# 2) Re-include your source directories (edit to match your repo)
+!src/
+!src/**
+!lib/
+!lib/**
+!app/
+!app/**
+!notebooks/
+!notebooks/**
+
+# 3) Belt-and-suspenders: never index secrets or client/private data,
+#    even if they live inside an allowed dir above.
+data/
+**/data/
+.env*
+**/secrets/**
+**/*secret*
+**/*.key
+**/*.pem
+
+# 4) notebook-shadow sidecar (regenerable data, not code) — only relevant if you
+#    use the notebook-shadow module.
+notebooks/.graphify_shadow/manifest.json
